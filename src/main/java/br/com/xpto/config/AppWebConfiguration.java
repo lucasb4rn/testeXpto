@@ -13,7 +13,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages ={"br.com.xpto.controllers"})  
+@ComponentScan(basePackages ={"br.com.xpto.controllers", "br.com.xpto.repository","br.com.xpto.services"})  
 public class AppWebConfiguration extends WebMvcConfigurerAdapter {
 	
 	@Bean

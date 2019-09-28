@@ -7,5 +7,7 @@ import br.com.xpto.entitys.Estado;
 
 @Repository
 public interface EstadoRepositoy extends JpaRepository<Estado, Integer> {
+	
+	Estado findByNome(String nome);
 
 }

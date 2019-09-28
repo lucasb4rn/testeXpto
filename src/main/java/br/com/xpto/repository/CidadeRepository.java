@@ -8,5 +8,4 @@ import br.com.xpto.entitys.Cidade;
 @Repository
 public interface CidadeRepository extends JpaRepository<Cidade, Integer> {
 
-
 }

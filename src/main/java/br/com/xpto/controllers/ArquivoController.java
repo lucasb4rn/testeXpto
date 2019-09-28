@@ -4,18 +4,30 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import br.com.xpto.entitys.Estado;
 import br.com.xpto.entitys.dto.ArquivoAux;
+import br.com.xpto.services.CidadeService;
+import br.com.xpto.services.EstadoService;
+import br.com.xpto.services.RegiaoService;
 
 @Controller
 public class ArquivoController {
+	
+	@Autowired
+	CidadeService cidadeService;
+	@Autowired
+	EstadoService estadoService;
+	@Autowired
+	RegiaoService regiaoService;
+	
 
 	@RequestMapping(value = "/arquivo", method = RequestMethod.POST)
 	public ModelAndView gravarDadosCsv(MultipartFile file) throws Exception {
@@ -51,9 +63,18 @@ public class ArquivoController {
                     itemArquivo[8], //microregion
                     itemArquivo[9]  //mesoregion
             );
-
-		
-		System.out.println(arquivoAux.toString());
+            
+                        
+            //salvar estado
+            Estado estado = estadoService.findByName(arquivoAux.getEstado());
+            if(estado == null || estado.getId() == -1) {
+            	 estado = new Estado();
+            	 estado.setNome(arquivoAux.getEstado());
+                 Estado estadoSalvo = estadoService.salvar(estado);
+                 System.out.println(estadoSalvo);
+            }
+            
+           
 		
         });
         
