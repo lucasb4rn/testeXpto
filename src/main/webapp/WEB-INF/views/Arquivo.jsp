@@ -15,7 +15,7 @@
 
 <body>
 	<div>
-		<form method="POST" enctype="multipart/form-data" action="/arquivo">
+		<form method="POST" enctype="multipart/form-data" action="${pageContext.request.contextPath}/arquivo">
 			Selecionar arquivo: 
 			<br>
 			<input type="file" name="file" /> 

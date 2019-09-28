@@ -8,34 +8,41 @@ public class ArquivoAux {
 	private String capital;
 	private String longitude;
 	private String latitude;
-	private String cidade;
+	private String noAccents;
 	private String alternativeNames;
 	private String microRegion;
 	private String mesoRegion;
 
 	public ArquivoAux(
-			
-		String idIbge,
-		String estado,
-		String name,
-		String capital,
-		String longitude, 
-		String latitude,
-		String cidade, 
-		String alternativeNames, 
-		String microRegion, 
-		String mesoRegion) 
-	{
+
+			String idIbge, String estado, String name, String capital, String longitude, String latitude,
+			String noAccents, String alternativeNames, String microRegion, String mesoRegion) {
 		this.idIbge = idIbge;
-		this.cidade = cidade;
+		this.estado = estado;
 		this.name = name;
 		this.capital = capital;
 		this.longitude = longitude;
 		this.latitude = latitude;
-		this.cidade = cidade;
+		this.noAccents = noAccents;
 		this.alternativeNames = alternativeNames;
 		this.microRegion = microRegion;
 		this.mesoRegion = mesoRegion;
+	}
+
+	public String getIdIbge() {
+		return idIbge;
+	}
+
+	public void setIdIbge(String idIbge) {
+		this.idIbge = idIbge;
+	}
+
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
 	}
 
 	public String getName() {
@@ -70,6 +77,14 @@ public class ArquivoAux {
 		this.latitude = latitude;
 	}
 
+	public String getNoAccents() {
+		return noAccents;
+	}
+
+	public void setNoAccents(String noAccents) {
+		this.noAccents = noAccents;
+	}
+
 	public String getAlternativeNames() {
 		return alternativeNames;
 	}
@@ -94,28 +109,13 @@ public class ArquivoAux {
 		this.mesoRegion = mesoRegion;
 	}
 
-	public String getIdIbge() {
-		return idIbge;
+	@Override
+	public String toString() {
+		return "ArquivoAux [idIbge=" + idIbge + ", estado=" + estado + ", name=" + name + ", capital=" + capital
+				+ ", longitude=" + longitude + ", latitude=" + latitude + ", noAccents=" + noAccents
+				+ ", alternativeNames=" + alternativeNames + ", microRegion=" + microRegion + ", mesoRegion="
+				+ mesoRegion + "]";
 	}
 
-	public void setIdIbge(String idIbge) {
-		this.idIbge = idIbge;
-	}
-
-	public String getEstado() {
-		return estado;
-	}
-
-	public void setEstado(String estado) {
-		this.estado = estado;
-	}
-
-	public String getCidade() {
-		return cidade;
-	}
-
-	public void setCidade(String cidade) {
-		this.cidade = cidade;
-	}
 
 }
