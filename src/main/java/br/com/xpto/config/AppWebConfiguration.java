@@ -13,7 +13,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages ={""})  
+@ComponentScan(basePackages ={"br.com.xpto.controllers"})  
 public class AppWebConfiguration extends WebMvcConfigurerAdapter {
 	
 	@Bean
@@ -26,7 +26,6 @@ public class AppWebConfiguration extends WebMvcConfigurerAdapter {
 	
 	@Override
 	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
-		// 
 		configurer.enable();
 	}
 	
