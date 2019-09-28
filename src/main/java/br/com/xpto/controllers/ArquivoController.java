@@ -17,7 +17,6 @@ import br.com.xpto.entitys.Cidade;
 import br.com.xpto.entitys.Estado;
 import br.com.xpto.entitys.Regiao;
 import br.com.xpto.entitys.dto.ArquivoAux;
-import br.com.xpto.repository.CidadeRepository;
 import br.com.xpto.services.CidadeService;
 import br.com.xpto.services.EstadoService;
 import br.com.xpto.services.RegiaoService;
