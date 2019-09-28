@@ -7,6 +7,7 @@ import br.com.xpto.entitys.Regiao;
 
 @Repository
 public interface RegiaoRepository extends JpaRepository<Regiao, Integer>{
-
+	
+	Regiao findByMesoRegionAndMicroRegion(String mesoRegion, String microRegion);
 
 }

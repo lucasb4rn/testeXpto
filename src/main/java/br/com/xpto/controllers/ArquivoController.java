@@ -12,22 +12,25 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import br.com.xpto.entitys.Capital;
+import br.com.xpto.entitys.Cidade;
 import br.com.xpto.entitys.Estado;
+import br.com.xpto.entitys.Regiao;
 import br.com.xpto.entitys.dto.ArquivoAux;
+import br.com.xpto.repository.CidadeRepository;
 import br.com.xpto.services.CidadeService;
 import br.com.xpto.services.EstadoService;
 import br.com.xpto.services.RegiaoService;
 
 @Controller
 public class ArquivoController {
-	
+
 	@Autowired
 	CidadeService cidadeService;
 	@Autowired
 	EstadoService estadoService;
 	@Autowired
 	RegiaoService regiaoService;
-	
 
 	@RequestMapping(value = "/arquivo", method = RequestMethod.POST)
 	public ModelAndView gravarDadosCsv(MultipartFile file) throws Exception {
@@ -65,7 +68,7 @@ public class ArquivoController {
             );
             
                         
-            //salvar estado
+            //Busca na tabela estado, senão existir adiciona registro
             Estado estado = estadoService.findByName(arquivoAux.getEstado());
             if(estado == null || estado.getId() == -1) {
             	 estado = new Estado();
@@ -74,11 +77,39 @@ public class ArquivoController {
                  System.out.println(estadoSalvo);
             }
             
+            
+            //Busca se existe uma região com os dados informados no csv, senão existir cria adiciona.
+            Regiao regiao = regiaoService.findByMesoRegionAndMicroRegion(arquivoAux.getMesoRegion(), arquivoAux.getMicroRegion());
+            if (regiao == null) {
+                regiao = new Regiao();
+                regiao.setMicroRegion(arquivoAux.getMicroRegion());
+                regiao.setMesoRegion(arquivoAux.getMesoRegion());
+                regiao = regiaoService.salvar(regiao);
+            }
+            
+            
+            Cidade cidade = cidadeService.findByName(arquivoAux.getName());
+            
+            if(cidade == null) {
+            	cidade = new Cidade(
+            			 Integer.parseInt(arquivoAux.getIdIbge()),
+            			 estado, 
+            			 arquivoAux.getName(), 
+            			 arquivoAux.getCapital().equalsIgnoreCase("TRUE") ? Capital.SIM : Capital.NAO,
+            			 Double.parseDouble(arquivoAux.getLongitude()),
+            			 Double.parseDouble(arquivoAux.getLatitude()),
+            			 arquivoAux.getAlternativeNames(),
+            			 regiao
+            			);
+				cidadeService.salvar(cidade);
+            }
+        
            
 		
         });
-        
-		return new ModelAndView();
+
+	return new ModelAndView();
+
 	}
 
 	@RequestMapping(value = "/arquivo", method = RequestMethod.GET)

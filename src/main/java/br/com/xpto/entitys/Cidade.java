@@ -12,22 +12,38 @@ public class Cidade {
 
 	@Id
 	private Integer idIbge;
-	
+
 	@ManyToOne
 	@NotNull
 	private Estado estado;
-	
-	private String nome;
-	
+
+	private String name;
+
 	@Enumerated(EnumType.STRING)
 	private Capital capital;
-	
+
 	private double longitude;
 	private double latitude;
 	private String nomeSecundario;
-	
+
 	@ManyToOne
 	private Regiao regiao;
+
+	public Cidade() {}
+	
+	public Cidade(
+
+			Integer idIbge, @NotNull Estado estado, String name, Capital capital, double longitude, double latitude,
+			String nomeSecundario, Regiao regiao) {
+		this.idIbge = idIbge;
+		this.estado = estado;
+		this.name = name;
+		this.capital = capital;
+		this.longitude = longitude;
+		this.latitude = latitude;
+		this.nomeSecundario = nomeSecundario;
+		this.regiao = regiao;
+	}
 
 	public Integer getIdIbge() {
 		return idIbge;
@@ -45,12 +61,12 @@ public class Cidade {
 		this.estado = estado;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getName() {
+		return name;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setNome(String name) {
+		this.name = name;
 	}
 
 	public Capital getCapital() {
