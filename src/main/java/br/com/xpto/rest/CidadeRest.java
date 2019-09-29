@@ -51,7 +51,12 @@ public class CidadeRest {
 	@ResponseStatus(value = HttpStatus.CREATED)
 	public Cidade addCidade(@RequestBody Cidade cidade) {
 		return cidadeService.adicionarCidade(cidade);
-
+	}
+	
+	@RequestMapping(value = "deletaCidade/{idIbge}", method = RequestMethod.DELETE)
+	@ResponseStatus(value = HttpStatus.OK)
+	public void deleteCidade(@PathVariable(value = "idIbge") Integer idIbge) {
+		cidadeService.deleteCidade(idIbge);
 	}
 	
 	

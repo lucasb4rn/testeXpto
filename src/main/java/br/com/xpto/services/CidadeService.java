@@ -7,6 +7,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import br.com.xpto.entitys.Capital;
 import br.com.xpto.entitys.Cidade;
@@ -61,6 +62,11 @@ public class CidadeService {
 		Integer idIbge = cidadeRepository.findFirstByOrderByIdIbgeDesc().getIdIbge();
 		cidade.setIdIbge(++idIbge);
 		return cidadeRepository.save(cidade);
+	}
+	
+	@Transactional
+	public void deleteCidade(Integer idIbge) {
+		cidadeRepository.delete(idIbge);		
 	}
 
 }
