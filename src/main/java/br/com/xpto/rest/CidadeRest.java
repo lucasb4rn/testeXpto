@@ -65,6 +65,11 @@ public class CidadeRest {
 		return cidadeService.getColunaPorConteudo(coluna, conteudo);
 	}
 	
+	@RequestMapping(value = "quantidadeColuna/{coluna}", method = RequestMethod.GET)
+	public Long getQuantidadeRegistrosPorColuna(@PathVariable(value = "coluna") String coluna) {
+		return cidadeService.getQuantidadeRegistrosPorColuna(coluna);
+	}
+	
 	
 	
 

@@ -1,10 +1,11 @@
 package br.com.xpto.services;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -73,29 +74,28 @@ public class CidadeService {
 	}
 
 	public List<Cidade> getColunaPorConteudo(String coluna, String conteudo) {
-		
+
 		Set<Integer> listaFiltrada = new HashSet<Integer>();
-		
+
 		List<Cidade> todasCidades = cidadeRepository.findAll();
 
 		for (Cidade cidade : todasCidades) {
-			
+
 			String retonaCampo = retonaCampo(cidade, coluna);
-			
-			if(retonaCampo.toLowerCase().equals(conteudo.toLowerCase())) {
+
+			if (retonaCampo.toLowerCase().equals(conteudo.toLowerCase())) {
 				listaFiltrada.add(cidade.getIdIbge());
 			}
-			
+
 		}
 
 		return cidadeRepository.findAll(listaFiltrada);
 	}
-	
-	
+
 	private String retonaCampo(Cidade cidade, String coluna) {
-		
+
 		switch (coluna) {
-		
+
 		case "ibge_id":
 			return cidade.getIdIbge() != null ? cidade.getIdIbge().toString() : "";
 		case "uf":
@@ -118,6 +118,18 @@ public class CidadeService {
 			return "";
 		}
 	}
-	
+
+	public Long getQuantidadeRegistrosPorColuna(String coluna) {
+
+		List<Cidade> todasCidades = cidadeRepository.findAll();
+		Map<Integer, String> mapColuna = new HashMap<Integer, String>();
+
+		for (Cidade cidade : todasCidades) {
+			mapColuna.put(cidade.getIdIbge(), retonaCampo(cidade, coluna));
+		}
+		
+		return mapColuna.values().stream().distinct().count();
+
+	}
 
 }
