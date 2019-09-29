@@ -30,17 +30,19 @@ public class CidadeRest {
 	}
 	
 	@RequestMapping(value = "quantidadeCidadePorEstado", method = RequestMethod.GET)
-	public List<EstadoQuantidadeCidade> getCidadePorEstado() {
+	public List<EstadoQuantidadeCidade> geQuantidadeCidadePorEstado() {
 		return cidadeService.findCidadeEstado();
 	}
-	
 	
 	@RequestMapping(value = "cidade/{idIbge}", method = RequestMethod.GET)
 	public Cidade getCidade(@PathVariable(value = "idIbge") Integer codigoIbge) {
 		return cidadeService.findByIdIbge(codigoIbge);
-
 	}
 	
+	@RequestMapping(value = "retornaCidadePoroEstado/{estado}", method = RequestMethod.GET)
+	public List<String> getCidadePorEstado(@PathVariable(value = "estado") String estado) {
+		return cidadeService.findByEstado(estado);
+	}
 	
 	
 	

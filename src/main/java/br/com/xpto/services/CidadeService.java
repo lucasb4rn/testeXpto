@@ -53,6 +53,10 @@ public class CidadeService {
 		return cidadeRepository.findByIdIbge(codigoIbge);
 	}
 	
+	public List<String> findByEstado(String estado) {
+		return cidadeRepository.findByEstado(estado);
+	}
+	
 	
 	
 	
