@@ -132,4 +132,9 @@ public class CidadeService {
 
 	}
 
+	public Long geQuantidadeTotalRegistros() {
+		return cidadeRepository.count();
+	};
+	
+
 }

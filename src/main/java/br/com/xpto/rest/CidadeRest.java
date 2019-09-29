@@ -70,7 +70,10 @@ public class CidadeRest {
 		return cidadeService.getQuantidadeRegistrosPorColuna(coluna);
 	}
 	
-	
+	@RequestMapping(value = "quantidadeTotalRegistros", method = RequestMethod.GET)
+	public Long geQuantidadeTotalRegistros() {
+		return cidadeService.geQuantidadeTotalRegistros();
+	}
 	
 
 }

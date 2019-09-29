@@ -33,7 +33,4 @@ public interface CidadeRepository extends JpaRepository<Cidade, Integer> {
 	
 	Cidade findByNameAndEstado(String nome, Estado estado);
 	
-	
-	
-	
 }
