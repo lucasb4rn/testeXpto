@@ -1,6 +1,7 @@
 package br.com.xpto.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import br.com.xpto.entitys.Capital;
 import br.com.xpto.entitys.Cidade;
+import br.com.xpto.entitys.Estado;
 import br.com.xpto.entitys.dto.EstadoQuantidadeCidade;
 
 @Repository
@@ -26,6 +28,12 @@ public interface CidadeRepository extends JpaRepository<Cidade, Integer> {
 	
 	@Query("Select c.name from Cidade c where c.estado.nome = :name")
 	List<String> findByEstado(@Param("name") String estado);
+	
+	Cidade findFirstByOrderByIdIbgeDesc();
+	
+	Cidade findByNameAndEstado(String nome, Estado estado);
+	
+	
 	
 	
 }
