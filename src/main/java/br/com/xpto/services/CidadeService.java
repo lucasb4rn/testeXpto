@@ -127,7 +127,7 @@ public class CidadeService {
 		for (Cidade cidade : todasCidades) {
 			mapColuna.put(cidade.getIdIbge(), retonaCampo(cidade, coluna));
 		}
-		
+
 		return mapColuna.values().stream().distinct().count();
 
 	}
@@ -135,6 +135,52 @@ public class CidadeService {
 	public Long geQuantidadeTotalRegistros() {
 		return cidadeRepository.count();
 	};
+
+	public List<Cidade> getCidadesMaisDistantes() {
+		
+		List<Cidade> listaCidade = cidadeRepository.findAll();
+
+		Cidade cidadeUm = null, CidadeDois = null;
+		double distanciaAtual, distanciaAnterior = 0;
+
+		for (int i = 0; i < listaCidade.size(); i++) {
+			Cidade cidade1 = listaCidade.get(i);
+			
+			for (int j = i + 1; j < listaCidade.size(); j++) {
+				Cidade cidade2 = listaCidade.get(j);
+				distanciaAtual = calculaDistancia(
+						cidade1.getLatitude(), 
+						cidade1.getLongitude(),
+						cidade2.getLatitude(),
+						cidade2.getLongitude());
+				
+				if (distanciaAtual > distanciaAnterior) {
+					cidadeUm = cidade1;
+					CidadeDois = cidade2;
+				}
+			}
+		}
+		
+		return Arrays.asList(cidadeUm, CidadeDois);
+	}
+
 	
+	private Double calculaDistancia(double latitude1, double longitude1, double latitude2, double longitude2) {
+		
+		// Conversão de graus pra radianos das latitudes
+		double firstLatToRad = Math.toRadians(latitude1);
+		double secondLatToRad = Math.toRadians(latitude2);
+
+		// Diferença das longitudes
+		double deltaLongitudeInRad = Math.toRadians(longitude1 - longitude2);
+
+		// Cálcula da distância entre os pontos
+		return Math.acos(Math.cos(firstLatToRad) * Math.cos(secondLatToRad)
+		* Math.cos(deltaLongitudeInRad) + Math.sin(firstLatToRad)
+		* Math.sin(secondLatToRad))
+		* 6.371;
+		
+	}
+
 
 }

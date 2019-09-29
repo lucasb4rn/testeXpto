@@ -75,5 +75,12 @@ public class CidadeRest {
 		return cidadeService.geQuantidadeTotalRegistros();
 	}
 	
+	@RequestMapping(value = "maiorDistanciaEntreDuasCidades", method = RequestMethod.GET)
+	public List<Cidade> getCidadesMaisDistantes() {
+		return cidadeService.getCidadesMaisDistantes();
+	}
+	
+	
+	
 
 }
