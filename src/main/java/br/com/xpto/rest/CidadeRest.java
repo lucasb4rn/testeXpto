@@ -59,6 +59,13 @@ public class CidadeRest {
 		cidadeService.deleteCidade(idIbge);
 	}
 	
+	@RequestMapping(value = "cidade/{coluna}/{conteudo}", method = RequestMethod.GET)
+	public List<Cidade> getCidadePorColunaAndConteudo(@PathVariable(value = "coluna") String coluna,
+			@PathVariable(value = "conteudo") String conteudo) {
+		return cidadeService.getColunaPorConteudo(coluna, conteudo);
+	}
+	
+	
 	
 
 }
