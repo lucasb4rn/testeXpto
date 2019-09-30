@@ -29,3 +29,23 @@ A class JPAConfigurator contém os dados para utilização do banco de dados;
 <p>GET /quantidadeColuna/{coluna}</p>
 <p>GET /quantidadeTotalRegistros</p>
 <p>GET /maiorDistanciaEntreDuasCidades</p>
+
+
+Exemplo para teste Method: Post - Body /adicionarCidade 
+Json: 
+{ 
+   "idIbge":6565656,
+   "estado":{ 
+      "id":5,
+      "nome":"PA"
+   },
+   "name":"Belm",
+   "capital":"SIM",
+   "longitude":-48.4878256875,
+   "latitude":-1.459845,
+   "nomeSecundario":""
+}
+
+
+
+
