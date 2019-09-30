@@ -22,7 +22,7 @@ A class JPAConfigurator contém os dados para utilização do banco de dados;
 <p> GET /estadoMaiorEMenor </p>
 <p>GET /quantidadeCidadePorEstado</p>
 <p>GET /cidade/{idIbge}</p>
-<p>GET /retornaCidadePoroEstado/{estado}</p>
+<p>GET /retornaCidadePorEstado/{estado}</p>
 <p>POST /adicionarCidade</p>
 <p>DELETE /deletaCidade/{idIbge}</p>
 <p>GET /cidade/{coluna}/{conteudo}</p>
