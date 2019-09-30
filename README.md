@@ -17,6 +17,7 @@ A class JPAConfigurator contém os dados para utilização do banco de dados;
 
 <h1> API RECURSOS </h1>
 
+<p> GET /arquivo </p>
 <p> GET /cidadeCapitaisOrdenadosPorNome </p>
 <p> GET /estadoMaiorEMenor </p>
 <p>GET /quantidadeCidadePorEstado</p>
