@@ -42,7 +42,7 @@ public class CidadeRest {
 		return cidadeService.findByIdIbge(codigoIbge);
 	}
 
-	@RequestMapping(value = "retornaCidadePoroEstado/{estado}", method = RequestMethod.GET)
+	@RequestMapping(value = "retornaCidadePorEstado/{estado}", method = RequestMethod.GET)
 	public List<String> getCidadePorEstado(@PathVariable(value = "estado") String estado) {
 		return cidadeService.findByEstado(estado);
 	}
