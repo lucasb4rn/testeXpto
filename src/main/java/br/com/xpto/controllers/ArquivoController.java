@@ -47,8 +47,6 @@ public class ArquivoController {
             arquivoLinha = bufferedReader.readLine();
             listaLinhas.add(arquivoLinha);
         }
-
-        bufferedReader.close();
         
         listaLinhas.forEach(e -> {
             String[] itemArquivo = e.split(",");
@@ -87,7 +85,7 @@ public class ArquivoController {
             }
             
             
-            Cidade cidade = cidadeService.findByName(arquivoAux.getName());
+            Cidade cidade = cidadeService.findByName(arquivoAux.getIdIbge());
             
             if(cidade == null) {
             	cidade = new Cidade(
@@ -105,7 +103,7 @@ public class ArquivoController {
 		
         });
 
-	return new ModelAndView();
+       return new ModelAndView("redirect: Sucesso");
 
 	}
 
@@ -113,5 +111,10 @@ public class ArquivoController {
 	public ModelAndView arquivo() {
 		return new ModelAndView("Arquivo");
 	}
-
+	
+	@RequestMapping(value = "/Sucesso", method = RequestMethod.GET)
+	public ModelAndView sucesso() {
+		return new ModelAndView("Sucesso");
+	}
+	
 }

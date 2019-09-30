@@ -25,9 +25,7 @@ public class ServletSpring extends AbstractAnnotationConfigDispatcherServletInit
 	@Override
 	protected String[] getServletMappings() {
 		return new String[]{"/"};
-		
 	}
-	
 	
 	@Override
 	protected Filter[] getServletFilters() {

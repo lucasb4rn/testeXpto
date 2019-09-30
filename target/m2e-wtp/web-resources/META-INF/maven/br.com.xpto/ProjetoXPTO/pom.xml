@@ -16,6 +16,13 @@
 
 
 	<dependencies>
+
+		<dependency>
+			<groupId>c3p0</groupId>
+			<artifactId>c3p0</artifactId>
+			<version>0.9.1.2</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
@@ -141,7 +148,8 @@
 			<version>1.8.0.RELEASE</version>
 		</dependency>
 
-		<!-- Usar sempre Versão 5.7 do mysql, pois versões atuais estão com problema no legacy mod -->
+		<!-- Usar sempre Versão 5.7 do mysql, pois versões atuais estão com problema 
+			no legacy mod -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>

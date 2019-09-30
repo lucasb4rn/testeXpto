@@ -1,5 +1,6 @@
 package br.com.xpto.config;
 
+import java.beans.PropertyVetoException;
 import java.util.Properties;
 
 import javax.persistence.EntityManagerFactory;
@@ -9,12 +10,13 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+
+import com.mchange.v2.c3p0.ComboPooledDataSource;
 
 @Configuration
 @EnableTransactionManagement
@@ -48,12 +50,25 @@ public class JPAConfigurator {
 	@Bean
 	@Profile("dev")
 	public DataSource dataSource() {
-		DriverManagerDataSource dataSource = new DriverManagerDataSource();
-		dataSource.setUsername("root");
-		dataSource.setPassword("padrao");
-		dataSource.setUrl("jdbc:mysql://localhost:3306/xpto");
-		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-		return dataSource;
+		
+		try {
+			
+			ComboPooledDataSource dataSource = new ComboPooledDataSource();
+			dataSource.setUser("root");
+			dataSource.setPassword("padrao");
+			dataSource.setJdbcUrl("jdbc:mysql://localhost:3306/xpto");
+			dataSource.setDriverClass("com.mysql.jdbc.Driver");
+
+			dataSource.setMinPoolSize(10);
+			dataSource.setMaxIdleTime(5);
+			return dataSource;
+
+		} catch (PropertyVetoException e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+
 	}
 
 	@Bean

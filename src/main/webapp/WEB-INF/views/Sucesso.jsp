@@ -15,8 +15,8 @@
 
 <body>
 	<div>
-		<span class="badge badge-pill badge-success">Registros
-			Inseridos Com Sucesso !!!</span>
+		<span class="badge badge-pill badge-success">
+		Registros Inseridos Com Sucesso !!! </span>
 	</div>
 </body>
 </html>
