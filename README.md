@@ -5,9 +5,7 @@
 <p> C3PO - POOL </p>
 <p> SPRING FRAMEWORK </p>
 <p> SPRING DATA </p>
-
-Utilizado o MYSQL 5.7 - Legacy Mode -- Versões recentes ocorrem muitos problemas de type crypt sha1, 
-não quis correr o risco de perder muito tempo para resolver esse tipo de problema. </p>
+<p> MYSQL 5.7 - Legacy Mode </p>
 
 A class JPAConfigurator contém os dados para utilização do banco de dados;
 
