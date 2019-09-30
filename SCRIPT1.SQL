@@ -1,0 +1,43 @@
+--Parte 3 – PL/SQL Prático
+
+--Crie as seguintes tabelas:
+
+
+-- TABLE NAME EXAME_NF 
+--IDNF   	      NUMERO
+--NUMERO	      NUMERO
+--DATACADASTRO	DATA
+--TOTALGERAL	   NUMERO
+
+--TABLE NAME  EXAME_ITEMNF
+--IDITEMNF	      NUMERO
+--IDNF	         NUMERO
+--IDPRODUTO	   NUMERO
+--QTDE        	NUMERO
+--VALOR	         NUMERO
+
+
+--DROP TABLE EXAME_NF;
+--DROP TABLE EXAME_ITEMNF;
+--SELECT * FROM EXAME_NF;
+--SELECT * FROM EXAME_ITEMNF;
+
+create table EXAME_NF (
+   IDNF number not null,
+   NUMERO number not null,
+   DATACADASTRO DATE not null,
+   TOTALGERAL number not null,
+   PRIMARY KEY (IDNF)
+);
+
+
+create table EXAME_ITEMNF (
+   IDITEMNF number not null,
+   IDNF number not null,
+   IDPRODUTO number not null,
+   QTDE number DEFAULT 0 not null,
+   VALOR number DEFAULT 0,
+   PRIMARY KEY (IDITEMNF),
+   CONSTRAINT fk_PRODUTOID FOREIGN KEY (IDPRODUTO) REFERENCES PRODUTO (IDPRODUTO),
+   CONSTRAINT fk_IDNF FOREIGN KEY (IDNF) REFERENCES EXAME_NF (IDNF)
+);
