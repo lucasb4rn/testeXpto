@@ -33,17 +33,17 @@ A class JPAConfigurator contém os dados para utilização do banco de dados;
 
 Exemplo para teste Method: Post - Body /adicionarCidade 
 Json: 
-{ 
-   "idIbge":6565656,
-   "estado":{ 
-      "id":5,
-      "nome":"PA"
-   },
-   "name":"Belm",
-   "capital":"SIM",
-   "longitude":-48.4878256875,
-   "latitude":-1.459845,
-   "nomeSecundario":""
+{"idIbge":8888888,
+"estado":{"id":110,"nome":"ES"},
+"name":"CidadeName","capital":"SIM",
+"longitude":-48.4878256875,
+"latitude":-1.459845,
+"nomeSecundario":"",
+"regiao": 
+{"id": 2041,
+"microRegion": "MicroRegionName",
+"mesoRegion": "MesoRegionName"
+}
 }
 
 
