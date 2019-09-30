@@ -67,7 +67,7 @@ public class ArquivoController {
                         
             //Busca na tabela estado, senão existir adiciona registro
             Estado estado = estadoService.findByName(arquivoAux.getEstado());
-            if(estado == null || estado.getId() == -1) {
+            if(estado == null) {
             	 estado = new Estado();
             	 estado.setNome(arquivoAux.getEstado());
                  Estado estadoSalvo = estadoService.salvar(estado);
