@@ -145,7 +145,7 @@
 		<dependency>
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-jpa</artifactId>
-			<version>1.8.0.RELEASE</version>
+			<version>1.11.23.RELEASE</version>
 		</dependency>
 
 		<!-- Usar sempre Versão 5.7 do mysql, pois versões atuais estão com problema 
